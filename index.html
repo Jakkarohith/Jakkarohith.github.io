@@ -3,8 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title>Simple ASP Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src='//www.aa.com/jquery.js'></script>
@@ -31,41 +35,71 @@
         padding: 10px;
         margin-top: 10px;
       }
+      .card {
+        margin: 25px auto; /* Added */
+        float: none; /* Added */
+        width: 35rem;
+        margin-bottom: 10px; /* Added */
+      }
     </style>
   </head>
   <body>
-    <h1>Ask a Question</h1>
-    <div id="answer"></div>
-    <button id="voice-input-btn"><i class="fa fa-microphone"></i></button>
-    <input type="text" id="text-input" placeholder="Type your question...">
-    <button id="submit-btn">Submit</button>
-    <div id="answer-box"></div>
-
+    <div class="card">
+      <img class="card-img-top" src="../Jakkarohith.github.io/ipl-captains.avif" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Indian premier league</h5>
+        <p class="card-text">This page provides information about the Indian premier league 2023</p>
+        <div id="answer"></div>
+        <button id="voice-input-btn"><i class="fa fa-microphone"></i></button>
+        <input type="text" id="text-input" placeholder="Type your question...">
+        <button id="submit-btn" class="btn btn-primary" style="text-align: center;">Submit</button>
+        <div id="answer-box"></div>
+      </div>
+    </div>
     <script>
       
       var isClose=true;
         const stopwords = ["of", "the", "a", "an", "any", "is", "can", "who", "what", "why", "whom"];
-        var editor = "sorts\n" +
-            "    #people = {tommy, alex, john, daniel, sarah, peter, lino}.\n" +
-            "    #gender = {male, female}.\n" +
-            "predicates\n" +
-            "    advisor(#people, #people).\n" +
-            "    friend(#people, #people).\n" +
-            "    gender(#people,#gender).\n" +
-            "    spanish(#people).\n" +
-            "rules\n" +
-            "    advisor(tommy, alex).\n" +
-            "    advisor(tommy, john).\n" +
-            "    advisor(tommy, daniel).\n" +
-            "    advisor(tommy, lino).\n" +
-            "    friend(lino, alex).\n" +
-            "    friend(lino, peter).\n" +
-            "    friend(sarah, alex).\n" +
-            "    friend(X, Y):-friend(Y,X).\n" +
-            "    gender(tommy,male).\n" +
-            "    gender(lino,male).\n" +
-            "    gender(sarah, female).\n" +
-            "    spanish(lino).";
+        var editor = "sorts\n"+
+    "#iplteams = {rcb,csk,mi,kkr,gt,dc,srh,pk,rr,lsg}.\n"+
+    "#iplteamnames = {royal_challengers_banglore,chennai_super_kings,mumbai_indians,kolkata_knight_riders,gujarat_titans,delhi_capitals,sunrisers_hyderabad,punjab_kings,rajasthan_royals,lucknow_super_gaints}.\n"+
+    "#captains = {m_s_dhoni,faf_du_plessis,rohit_sharma,shreyas_iyer,hardik_pandaya,rishab_pant,aiden_makaram,shikhar_dhawan,sanju_samson,k_l_rahul}.\n"+
+    "#trophies = {0,1,2,3,4,5,6,7,8,9}.\n"+
+"predicates\n"+
+    "iplnames(#iplteams,#iplteamnames).\n"+
+    "iplcaptains(#captains,#iplteams).\n"+
+    "numberoftrophies(#trophies,#iplteams).\n"+
+"rules\n"+
+    "iplnames(rcb,royal_challengers_banglore).\n"+
+    "iplnames(csk,chennai_super_kings).\n"+
+    "iplnames(mi,mumbai_indians).\n"+
+    "iplnames(kkr,kolkata_knight_riders).\n"+
+    "iplnames(gt,gujarat_titans).\n"+
+    "iplnames(dc,delhi_capitals).\n"+
+    "iplnames(srh,sunrisers_hyderabad).\n"+
+    "iplnames(pk,punjab_kings).\n"+
+    "iplnames(rr,rajasthan_royals).\n"+
+    "iplnames(lsg,lucknow_super_gaints).\n"+
+    "iplcaptains(faf_du_plessis,rcb).\n"+
+    "iplcaptains(m_s_dhoni,csk).\n"+
+    "iplcaptains(rohit_sharma,mi).\n"+
+    "iplcaptains(hardik_pandaya,gt).\n"+
+    "iplcaptains(rishab_pant,dc).\n"+
+    "iplcaptains(aiden_makaram,srh).\n"+
+    "iplcaptains(shikhar_dhawan,pk).\n"+
+    "iplcaptains(sanju_samson,rr).\n"+
+    "iplcaptains(k_l_rahul,lsg).\n"+
+    "iplcaptains(shreyas_iyer,kkr).\n"+
+    "numberoftrophies(0,rcb).\n"+
+    "numberoftrophies(5,mi).\n"+
+    "numberoftrophies(2,kkr).\n"+
+    "numberoftrophies(4,csk).\n"+
+    "numberoftrophies(2,srh).\n"+
+    "numberoftrophies(1,rr).\n"+
+    "numberoftrophies(0,pk).\n"+
+    "numberoftrophies(0,dc).\n"+
+    "numberoftrophies(0,lsg).\n"+
+    "numberoftrophies(1,gt).";
         // sorts
         var contstring = editor.split("sorts\n")[1].split("predicates\n");
         var sortstring = contstring[0].split('.');
@@ -201,10 +235,13 @@
             editor: editor
           },
           success: function(response) {
-            console.log(response);
-             const answer = response || 'Sorry, I could not find an answer.';
-             answerDiv.innerHTML = answer;
-             answerBox.innerHTML = answer;
+             if(response){
+                let temptRes = response.split('=').pop()
+                answerDiv.innerHTML = temptRes;             
+             } else {
+              const answer = 'Sorry, I could not find an answer.';
+              answerDiv.innerHTML = answer;
+             }
           },
           error: function(xhr, status, error) {
             console.log("error: " + error);
